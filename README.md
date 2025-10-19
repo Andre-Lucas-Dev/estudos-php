@@ -15,24 +15,11 @@ composer create-project laravel/laravel nome-do-projeto
 2. Após a criação, eu gosto de fazer primeiro a configuração do .env que vai armazenar
 as informações sensíveis do projeto, incluindo o banco. Como é para provas,
 atividades e coisas acadêmicas, não precisa de muito critério, então só precisa
-configurar o local das informações do banco. Abre o .env e procura por:
-DB_CONNECTION=sqlite
-# DB_HOST=127.0.0.1
-# DB_PORT=3306
-# DB_DATABASE=laravel
-# DB_USERNAME=root
-# DB_PASSWORD=
+configurar o local das informações do banco.
 
 Tira as hashtags e pode alterar DB_DATABASE e DB_CONNECTION. Como
-estamos usando MySQL na aula, eu optei por continuar assim. Quando você alterar
-tudo, vai ficar assim:
+estamos usando MySQL na aula, eu optei por continuar assim. 
 
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=nome-banco
-DB_USERNAME=root
-DB_PASSWORD=
 
 3. Depois que fizer isso, pode começar a criar as migrations. É muito importante ter
 cuidado com a ordem de criação porque se uma tabela depende de outra, você
@@ -44,33 +31,42 @@ simples: sempre crie primeiro as tabelas independentes (que não dependem de
 ninguém) e depois as tabelas que fazem referência a outras. O Laravel executa as
 migrations em ordem cronológica baseada no timestamp do nome do arquivo. Então,
 para criar a migration use o comando:
+
 php artisan make:migration create_nome_tabela_table
 
-4. Quando você cria uma migration com o comando php artisan
-make:migration, o Laravel cria apenas um arquivo vazio com a estrutura básica.
+4. Quando você cria uma migration com o comando
+ 
+ php artisan make:migration
+
+o Laravel cria apenas um arquivo vazio com a estrutura básica.
 Você precisa editar esse arquivo e adicionar manualmente todos os campos
 (colunas) que sua tabela vai ter. Depois que fizer isso, poderá rodar o comando que
 irá adicionar as tabelas criadas naquele banco que você configurou no arquivo .env.
 O comando é esse:
+
 php artisan migrate
 
-5. Após criar o banco, você vai precisar criar os models. Um model é uma classe PHP
+8. Após criar o banco, você vai precisar criar os models. Um model é uma classe PHP
 que representa uma tabela do banco de dados. É a ponte entre o código e o banco
 de dados. Os models vão permitir que você interaja com os dados do banco sem
 usar SQL. Em vez de fazer queries SQL manualmente, você usa métodos PHP
 simples. Para cada tabela do seu banco você vai precisar de um model. Para criar
 os models, tem que usar o comando:
+
 php artisan make:model Nome
 
-6. Agora que criou os models e configurou todos eles, você vai partir para uma das
+10. Agora que criou os models e configurou todos eles, você vai partir para uma das
 partes mais cruciais, que são os controllers. Os controllers basicamente vão fazer o
 trabalho da lógica da sua API. Eles que setam os parâmetros solicitados pelo
 professor. Em resumo, são as regras de negócio. Exemplo: o pedido deve ter pelo
 menos 1 pedido inserido. Para criar os controllers, tem que usar o comando:
+
 php artisan make:controller NomeController
 
-7. Por fim, tem as routes, que são as famosas rotas. Você vai precisar criar um arquivo
+12. Por fim, tem as routes, que são as famosas rotas. Você vai precisar criar um arquivo
 em routes chamado api.php e é lá que você vai criar as rotas. Para criar
 automaticamente, pode usar:
+
 php artisan install:api
+
 Depois disso é só você configurar todas as rotas que criou no controller.
