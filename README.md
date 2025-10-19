@@ -8,7 +8,6 @@
 </p>
 
 
-Guia inicial do Laravel
 1. Comece o projeto com o comando:
 composer create-project laravel/laravel nome-do-projeto
 
