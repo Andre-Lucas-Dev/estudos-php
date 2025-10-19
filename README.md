@@ -26,6 +26,7 @@ DB_CONNECTION=sqlite
 Tira as hashtags e pode alterar DB_DATABASE e DB_CONNECTION. Como
 estamos usando MySQL na aula, eu optei por continuar assim. Quando você alterar
 tudo, vai ficar assim:
+
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
